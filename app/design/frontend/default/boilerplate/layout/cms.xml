@@ -61,6 +61,23 @@ Default layout, loads most of the pages
 
     <cms_index_index translate="label">
         <label>CMS Home Page</label>
+        <reference name="content">
+            <block type="catalog/product_list_random" name="product_random" alias="product_homepage" template="catalog/product/list_home.phtml">
+                <action method="setColumnCount"><count>5</count></action>
+                <action method="setProductsCount"><count>15</count></action>
+            </block>  
+
+            <block type="catalog/product_list" name="home.catalog.product.list" alias="product_homepage" category_id="3" template="catalog/product/list_home.phtml">
+                <action method="setColumnCount"><count>5</count></action>
+                <action method="setProductsCount"><count>5</count></action>
+            </block>   
+            
+            <block type="catalog/product_list" name="home.catalog.product.list" alias="product_homepage" category_id="3" template="catalog/product/list_home.phtml">
+                <remove name="product_list_toolbar"/>
+                <action method="setColumnCount"><count>5</count></action>
+                <action method="setProductsCount"><count>15</count></action>
+            </block>               
+        </reference>
     </cms_index_index>
 
     <cms_index_defaultindex>
