@@ -21,7 +21,8 @@
         <reference name="head">
             <!-- Add our assets -->
             <action method="addCss"><stylesheet>css/style.css</stylesheet></action>
-            <action method="addCss"><stylesheet>css/custom.css</stylesheet></action>            
+            <action method="addCss"><stylesheet>css/custom.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/font-awesome.css</stylesheet></action>
             <action method="addItem"><type>skin_js</type><name>js/script-ck.js</name></action>
         </reference>
     </print>
