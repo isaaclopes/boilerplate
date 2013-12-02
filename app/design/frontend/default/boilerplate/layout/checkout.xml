@@ -55,6 +55,16 @@ Default layout, loads most of the pages
 
     <checkout_cart_index translate="label">
         <label>Shopping Cart</label>
+        <reference name="header">
+             <remove name="top.links"/>
+             <remove name="top.links2"/>
+             <remove name="store_language"/>
+             <remove name="top.menu"/>
+             <remove name="welcome"/>
+             <remove name="topSearch"/>
+             <remove name="top.search"/>
+             <remove name="cart_sidebar"/>
+        </reference>
         <remove name="right"/>
         <remove name="left"/>
         <!-- Mage_Checkout -->

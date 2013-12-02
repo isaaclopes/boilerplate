@@ -25,4 +25,16 @@
             <action method="addItem"><type>skin_js</type><name>js/script-ck.js</name></action>
         </reference>
     </print>
+    <inovarti_onestepcheckout_index_index translate="label">
+        <reference name="header">
+             <remove name="top.links"/>
+             <remove name="top.links2"/>
+             <remove name="store_language"/>
+             <remove name="top.menu"/>
+             <remove name="welcome"/>
+             <remove name="topSearch"/>
+             <remove name="top.search"/>
+             <remove name="cart_sidebar"/>
+        </reference>
+    </inovarti_onestepcheckout_index_index>
 </layout>
