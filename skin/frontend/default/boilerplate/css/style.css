@@ -732,60 +732,6 @@ aside[role="complementary"] {
     display: block;
   }
 }
-footer[role="contentinfo"] {
-  margin-bottom: 20px;
-}
-footer[role="contentinfo"]:before,
-footer[role="contentinfo"]:after {
-  content: " ";
-  /* 1 */
-
-  display: table;
-  /* 2 */
-
-}
-footer[role="contentinfo"]:after {
-  clear: both;
-}
-footer[role="contentinfo"]:before,
-footer[role="contentinfo"]:after {
-  content: " ";
-  /* 1 */
-
-  display: table;
-  /* 2 */
-
-}
-footer[role="contentinfo"]:after {
-  clear: both;
-}
-footer[role="contentinfo"] > ul > li,
-footer[role="contentinfo"] .links li {
-  display: inline;
-}
-footer[role="contentinfo"] > ul,
-footer[role="contentinfo"] .links,
-footer[role="contentinfo"] .bugs,
-footer[role="contentinfo"] address {
-  margin-bottom: 10px;
-}
-@media (min-width: 768px) {
-  footer[role="contentinfo"] > ul,
-  footer[role="contentinfo"] .links,
-  footer[role="contentinfo"] .bugs,
-  footer[role="contentinfo"] address {
-    width: 50%;
-  }
-  footer[role="contentinfo"] > ul,
-  footer[role="contentinfo"] .bugs {
-    float: left;
-  }
-  footer[role="contentinfo"] .links,
-  footer[role="contentinfo"] address {
-    float: right;
-    text-align: right;
-  }
-}
 p {
   margin: 0 0 10px;
 }
@@ -6383,8 +6329,8 @@ a.form-search .search-autocomplete li:focus {
 }
 .products-grid .item {
   position: relative;
-  float: left;
-  width: 25%;
+  /*float: left;*/
+  /*width: 25%;*/
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
@@ -6405,6 +6351,8 @@ a.form-search .search-autocomplete li:focus {
   transition: all 0.2s ease-in-out;
   display: inline-block;
   max-width: 100%;
+  vertical-align: top;
+  width: 100%;
   height: auto;
 }
 .products-grid .product-name {

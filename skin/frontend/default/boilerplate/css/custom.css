@@ -24,7 +24,9 @@ body{
   background-clip: padding-box;
 }
 /*home lista 5 produto*/
-.cms-home .products-grid .item{
-    width: 20%;
+@media (min-width: 992px) {
+    .cms-home .products-grid .item{
+        width: 20%;
+    }
 }
 
