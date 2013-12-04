@@ -1795,14 +1795,14 @@
 
             relative: {
                 ">": {
-                    dir: "parentNode", 
+                    dir: "parentNode",
                     first: true
                 },
                 " ": {
                     dir: "parentNode"
                 },
                 "+": {
-                    dir: "previousSibling", 
+                    dir: "previousSibling",
                     first: true
                 },
                 "~": {
@@ -2262,16 +2262,16 @@
 
         // Add button/input type pseudos
         for ( i in {
-            radio: true, 
-            checkbox: true, 
-            file: true, 
-            password: true, 
+            radio: true,
+            checkbox: true,
+            file: true,
+            password: true,
             image: true
         } ) {
             Expr.pseudos[ i ] = createInputPseudo( i );
         }
         for ( i in {
-            submit: true, 
+            submit: true,
             reset: true
         } ) {
             Expr.pseudos[ i ] = createButtonPseudo( i );
@@ -4756,7 +4756,7 @@
                         }
                         if ( matches.length ) {
                             handlerQueue.push({
-                                elem: cur, 
+                                elem: cur,
                                 handlers: matches
                             });
                         }
@@ -4767,7 +4767,7 @@
             // Add the remaining (directly-bound) handlers
             if ( delegateCount < handlers.length ) {
                 handlerQueue.push({
-                    elem: this, 
+                    elem: this,
                     handlers: handlers.slice( delegateCount )
                 });
             }
@@ -5038,7 +5038,7 @@
     // Support: Firefox, Chrome, Safari
     if ( !jQuery.support.focusinBubbles ) {
         jQuery.each({
-            focus: "focusin", 
+            focus: "focusin",
             blur: "focusout"
         }, function( orig, fix ) {
 
@@ -6107,8 +6107,8 @@
     },
 
     cssShow = {
-        position: "absolute", 
-        visibility: "hidden", 
+        position: "absolute",
+        visibility: "hidden",
         display: "block"
     },
     cssNormalTransform = {
@@ -6696,12 +6696,12 @@
                 jQuery.isArray( val ) ?
                 jQuery.map( val, function( val ){
                     return {
-                        name: elem.name, 
+                        name: elem.name,
                         value: val.replace( rCRLF, "\r\n" )
                     };
                 }) :
                 {
-                    name: elem.name, 
+                    name: elem.name,
                     value: val.replace( rCRLF, "\r\n" )
                 };
             }).get();
@@ -7326,8 +7326,8 @@
 
             // Install callbacks on deferreds
             for ( i in {
-                success: 1, 
-                error: 1, 
+                success: 1,
+                error: 1,
                 complete: 1
             } ) {
                 jqXHR[ i ]( s[ i ] );
@@ -7652,7 +7652,7 @@
                                 response = conv( response );
                             } catch ( e ) {
                                 return {
-                                    state: "parsererror", 
+                                    state: "parsererror",
                                     error: conv ? e : "No conversion from " + prev + " to " + current
                                 };
                             }
@@ -7663,7 +7663,7 @@
         }
 
         return {
-            state: "success", 
+            state: "success",
             data: response
         };
     }
@@ -8669,7 +8669,7 @@ jQuery.fn.offset = function( options ) {
     var docElem, win,
     elem = this[ 0 ],
     box = {
-        top: 0, 
+        top: 0,
         left: 0
     },
     doc = elem && elem.ownerDocument;
@@ -8757,7 +8757,7 @@ jQuery.fn.extend({
         var offsetParent, offset,
         elem = this[ 0 ],
         parentOffset = {
-            top: 0, 
+            top: 0,
             left: 0
         };
 
@@ -8804,7 +8804,7 @@ jQuery.fn.extend({
 
 // Create scrollLeft and scrollTop methods
 jQuery.each( {
-    scrollLeft: "pageXOffset", 
+    scrollLeft: "pageXOffset",
     scrollTop: "pageYOffset"
 }, function( method, prop ) {
     var top = "pageYOffset" === prop;
@@ -8835,12 +8835,12 @@ function getWindow( elem ) {
 }
 // Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
 jQuery.each( {
-    Height: "height", 
+    Height: "height",
     Width: "width"
 }, function( name, type ) {
     jQuery.each( {
-        padding: "inner" + name, 
-        content: type, 
+        padding: "inner" + name,
+        content: type,
         "": "outer" + name
     }, function( defaultExtra, funcName ) {
         // margin is only for outerHeight, outerWidth
@@ -8957,11 +8957,11 @@ if ( typeof window === "object" && typeof window.document === "object" ) {
 
         var transEndEventNames = {
             'WebkitTransition' : 'webkitTransitionEnd'
-            , 
+            ,
             'MozTransition'    : 'transitionend'
-            , 
+            ,
             'OTransition'      : 'oTransitionEnd otransitionend'
-            , 
+            ,
             'transition'       : 'transitionend'
         }
 
@@ -9221,9 +9221,9 @@ if ( typeof window === "object" && typeof window.document === "object" ) {
 
     Modal.DEFAULTS = {
         backdrop: true
-        , 
+        ,
         keyboard: true
-        , 
+        ,
         show: true
     }
 
@@ -9492,9 +9492,9 @@ if ( typeof window === "object" && typeof window.document === "object" ) {
 
     Carousel.DEFAULTS = {
         interval: 5000
-        , 
+        ,
         pause: 'hover'
-        , 
+        ,
         wrap: true
     }
 
@@ -9572,7 +9572,7 @@ if ( typeof window === "object" && typeof window.document === "object" ) {
         isCycling && this.pause()
 
         var e = $.Event('slide.bs.carousel', {
-            relatedTarget: $next[0], 
+            relatedTarget: $next[0],
             direction: direction
         })
 
@@ -9697,144 +9697,140 @@ if ( typeof window === "object" && typeof window.document === "object" ) {
  * ======================================================================== */
 
 
-+function ($) {
-    "use strict";
++function ($) { "use strict";
 
-    // DROPDOWN CLASS DEFINITION
-    // =========================
+  // DROPDOWN CLASS DEFINITION
+  // =========================
 
-    var backdrop = '.dropdown-backdrop'
-    var toggle   = '[data-toggle=dropdown]'
-    var Dropdown = function (element) {
-        var $el = $(element).on('click.bs.dropdown', this.toggle)
+  var backdrop = '.dropdown-backdrop'
+  var toggle   = '[data-toggle=dropdown]'
+  var Dropdown = function (element) {
+    var $el = $(element).on('click.bs.dropdown', this.toggle)
+  }
+
+  Dropdown.prototype.toggle = function (e) {
+    var $this = $(this)
+
+    if ($this.is('.disabled, :disabled')) return
+
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
+
+    clearMenus()
+
+    if (!isActive) {
+      if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
+        // if mobile we we use a backdrop because click events don't delegate
+        $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
+      }
+
+      $parent.trigger(e = $.Event('show.bs.dropdown'))
+
+      if (e.isDefaultPrevented()) return
+
+      $parent
+        .toggleClass('open')
+        .trigger('shown.bs.dropdown')
+
+      $this.focus()
     }
 
-    Dropdown.prototype.toggle = function (e) {
-        var $this = $(this)
+    return false
+  }
 
-        if ($this.is('.disabled, :disabled')) return
+  Dropdown.prototype.keydown = function (e) {
+    if (!/(38|40|27)/.test(e.keyCode)) return
 
-        var $parent  = getParent($this)
-        var isActive = $parent.hasClass('open')
+    var $this = $(this)
 
-        clearMenus()
+    e.preventDefault()
+    e.stopPropagation()
 
-        if (!isActive) {
-            if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
-                // if mobile we we use a backdrop because click events don't delegate
-                $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
-            }
+    if ($this.is('.disabled, :disabled')) return
 
-            $parent.trigger(e = $.Event('show.bs.dropdown'))
+    var $parent  = getParent($this)
+    var isActive = $parent.hasClass('open')
 
-            if (e.isDefaultPrevented()) return
-
-            $parent
-            .toggleClass('open')
-            .trigger('shown.bs.dropdown')
-
-            $this.focus()
-        }
-
-        return false
+    if (!isActive || (isActive && e.keyCode == 27)) {
+      if (e.which == 27) $parent.find(toggle).focus()
+      return $this.click()
     }
 
-    Dropdown.prototype.keydown = function (e) {
-        if (!/(38|40|27)/.test(e.keyCode)) return
+    var $items = $('[role=menu] li:not(.divider):visible a', $parent)
 
-        var $this = $(this)
+    if (!$items.length) return
 
-        e.preventDefault()
-        e.stopPropagation()
+    var index = $items.index($items.filter(':focus'))
 
-        if ($this.is('.disabled, :disabled')) return
+    if (e.keyCode == 38 && index > 0)                 index--                        // up
+    if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
+    if (!~index)                                      index=0
 
-        var $parent  = getParent($this)
-        var isActive = $parent.hasClass('open')
+    $items.eq(index).focus()
+  }
 
-        if (!isActive || (isActive && e.keyCode == 27)) {
-            if (e.which == 27) $parent.find(toggle).focus()
-            return $this.click()
-        }
-
-        var $items = $('[role=menu] li:not(.divider):visible a', $parent)
-
-        if (!$items.length) return
-
-        var index = $items.index($items.filter(':focus'))
-
-        if (e.keyCode == 38 && index > 0)                 index--                        // up
-        if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
-        if (!~index)                                      index=0
-
-        $items.eq(index).focus()
-    }
-
-    function clearMenus() {
-        $(backdrop).remove()
-        $(toggle).each(function (e) {
-            var $parent = getParent($(this))
-            if (!$parent.hasClass('open')) return
-            $parent.trigger(e = $.Event('hide.bs.dropdown'))
-            if (e.isDefaultPrevented()) return
-            $parent.removeClass('open').trigger('hidden.bs.dropdown')
-        })
-    }
-
-    function getParent($this) {
-        var selector = $this.attr('data-target')
-
-        if (!selector) {
-            selector = $this.attr('href')
-            selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
-        }
-
-        var $parent = selector && $(selector)
-
-        return $parent && $parent.length ? $parent : $this.parent()
-    }
-
-
-    // DROPDOWN PLUGIN DEFINITION
-    // ==========================
-
-    var old = $.fn.dropdown
-
-    $.fn.dropdown = function (option) {
-        return this.each(function () {
-            var $this = $(this)
-            var data  = $this.data('dropdown')
-
-            if (!data) $this.data('dropdown', (data = new Dropdown(this)))
-            if (typeof option == 'string') data[option].call($this)
-        })
-    }
-
-    $.fn.dropdown.Constructor = Dropdown
-
-
-    // DROPDOWN NO CONFLICT
-    // ====================
-
-    $.fn.dropdown.noConflict = function () {
-        $.fn.dropdown = old
-        return this
-    }
-
-
-    // APPLY TO STANDARD DROPDOWN ELEMENTS
-    // ===================================
-
-    $(document)
-    .on('click.bs.dropdown.data-api', clearMenus)
-    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) {
-        e.stopPropagation()
+  function clearMenus() {
+    $(backdrop).remove()
+    $(toggle).each(function (e) {
+      var $parent = getParent($(this))
+      if (!$parent.hasClass('open')) return
+      $parent.trigger(e = $.Event('hide.bs.dropdown'))
+      if (e.isDefaultPrevented()) return
+      $parent.removeClass('open').trigger('hidden.bs.dropdown')
     })
+  }
+
+  function getParent($this) {
+    var selector = $this.attr('data-target')
+
+    if (!selector) {
+      selector = $this.attr('href')
+      selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+    }
+
+    var $parent = selector && $(selector)
+
+    return $parent && $parent.length ? $parent : $this.parent()
+  }
+
+
+  // DROPDOWN PLUGIN DEFINITION
+  // ==========================
+
+  var old = $.fn.dropdown
+
+  $.fn.dropdown = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+      var data  = $this.data('dropdown')
+
+      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+      if (typeof option == 'string') data[option].call($this)
+    })
+  }
+
+  $.fn.dropdown.Constructor = Dropdown
+
+
+  // DROPDOWN NO CONFLICT
+  // ====================
+
+  $.fn.dropdown.noConflict = function () {
+    $.fn.dropdown = old
+    return this
+  }
+
+
+  // APPLY TO STANDARD DROPDOWN ELEMENTS
+  // ===================================
+
+  $(document)
+    .on('click.bs.dropdown.data-api', clearMenus)
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.bs.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
 }(jQuery);
-
 /*
  * Project: Twitter Bootstrap Hover Dropdown
  * Author: Cameron Spear
@@ -9963,7 +9959,7 @@ jQuery.noConflict();
     Site.prototype = {
         constructor: Site
 
-        , 
+        ,
         start: function() {
             var me = this;
 
@@ -9974,12 +9970,12 @@ jQuery.noConflict();
             this.attach();
         }
 
-        , 
+        ,
         attach: function() {
             this.attachMedia();
         }
 
-        , 
+        ,
         attachMedia: function() {
             var $links = $('[data-toggle="media"]');
             if ( ! $links.length) return;

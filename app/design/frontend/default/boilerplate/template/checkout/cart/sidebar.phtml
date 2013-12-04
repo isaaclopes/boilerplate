@@ -33,7 +33,7 @@
     <div class="block-cart dropdown">
         <?php $_cartQty = $this->getSummaryCount() ?>
         <div class="block-title" role="button" data-toggle="dropdown" data-target="#dLabel-menu" data-hover="dropdown">
-            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span class="fa fa-shopping-cart fa-2x"></span>
             <?php if ($_cartQty > 0): ?>
                 <?php if ($_cartQty == 1): ?>
                      <strong><span><?php echo $this->__('<a href="%s">My Cart (1)</a>', $this->getUrl('checkout/cart')) ?></span></strong>
