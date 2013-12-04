@@ -12,10 +12,12 @@
             <action method="removeItem"><type>js</type><name>lib/ds-sleight.js</name></action>
             <action method="removeItem"><type>js</type><name>varien/menu.js</name></action>
             <!-- Add our assets -->
+            <action method="addCss"><stylesheet>components/bootstrap/css/bootstrap.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/style.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/custom.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/font-awesome.css</stylesheet></action>
-            <action method="addItem"><type>skin_js</type><name>js/script-ck.js</name></action>
+            <!--action method="addItem"><type>skin_js</type><name>js/script-ck.js</name></action-->
+            <action method="addItem"><type>skin_js</type><name>components/bootstrap/js/bootstrap.js</name></action>
         </reference>
     </default>
     <print>

@@ -37,6 +37,7 @@ class Webcomm_BootstrapNavigation_Block_Page_Html_Topmenu extends Mage_Page_Bloc
 
             $anchorClasses = array();
             $anchorAttributes = array();
+            $anchorSubAttributes = array();
 
             $outermostClassCode = '';
             $outermostClass = $menuTree->getOutermostClass();
@@ -47,21 +48,28 @@ class Webcomm_BootstrapNavigation_Block_Page_Html_Topmenu extends Mage_Page_Bloc
             }
 
             if ($child->hasChildren()) {
-                $anchorClasses[] = 'dropdown-toggle';
-
+                $anchorClasses[] = 'dropdown-toggle btn';
+                $anchorSubAttributes[] = array('id', $child->getId());
+                
                 if ($childLevel == 0) {
-                    // $anchorAttributes[] = array('data-toggle', 'dropdown');
+                    //$anchorAttributes[] = array('data-toggle', 'dropdown');
                     $anchorAttributes[] = array('data-hover', 'dropdown');
+                    $anchorAttributes[] = array('data-target','#'.$child->getId());
+                    $childrenWrapClass.=' dropdown-menu ';
                 }
             }
 
             // Add list item
-            $html .= '<li ' . $this->_getRenderedMenuItemAttributes($child) . '>';
+            $html .= '<li ' . $this->_getRenderedMenuItemAttributes($child) . ' class="dropdown">';
 
             array_walk($anchorAttributes, function(&$attribute) {
                         $attribute = $attribute[0] . '="' . $attribute[1] . '"';
-                    });
-
+            });
+            
+            array_walk($anchorSubAttributes, function(&$attributesub) {
+                        $attributesub = $attributesub[0] . '="' . $attributesub[1] . '"';
+            });
+            
             // Add anchor item
             $html .= '<a href="' . $child->getUrl() . '" class="' . implode(' ', $anchorClasses) . '"' . implode(' ', $anchorAttributes) . '>';
 
@@ -76,7 +84,7 @@ class Webcomm_BootstrapNavigation_Block_Page_Html_Topmenu extends Mage_Page_Bloc
             $html .= '</a>';
 
             if ($child->hasChildren()) {
-                $html .= '<ul class="level' . $childLevel . ' ' . $childrenWrapClass . '">';
+                $html .= '<ul class="level' . $childLevel . ' ' . $childrenWrapClass . '"' . implode(' ', $anchorSubAttributes) . ' style="display:none">';
                 $html .= $this->_getHtml($child, $childrenWrapClass);
                 $html .= '</ul>';
             }

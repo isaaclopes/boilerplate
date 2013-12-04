@@ -519,11 +519,11 @@
 
   function clearMenus() {
     $(backdrop).remove()
-    $(toggle).each(function (e) {
+    $(toggle).each(function (event) {
       var $parent = getParent($(this))
       if (!$parent.hasClass('open')) return
-      $parent.trigger(e = $.Event('hide.bs.dropdown'))
-      if (e.isDefaultPrevented()) return
+      $parent.trigger(event = $.Event('hide.bs.dropdown'))
+      if (event.isDefaultPrevented()) return
       $parent.removeClass('open').trigger('hidden.bs.dropdown')
     })
   }
@@ -579,7 +579,115 @@
     .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
 }(jQuery);
+/*
+ * Project: Twitter Bootstrap Hover Dropdown
+ * Author: Cameron Spear
+ * Contributors: Mattia Larentis
+ *
+ * Dependencies: Bootstrap's Dropdown plugin, jQuery
+ *
+ * A simple plugin to enable Bootstrap dropdowns to active on hover and provide a nice user experience.
+ *
+ * License: MIT
+ *
+ * http://cameronspear.com/blog/twitter-bootstrap-dropdown-on-hover-plugin/
+ */
+;
+(function($, window, undefined) {
+    // don't do anything if touch is supported
+    // (plugin causes some issues on mobile)
+    if('ontouchstart' in document) return;
 
+    // outside the scope of the jQuery plugin to
+    // keep track of all dropdowns
+    var $allDropdowns = $();
+
+    // if instantlyCloseOthers is true, then it will instantly
+    // shut other nav items when a new one is hovered over
+    $.fn.dropdownHover = function(options) {
+
+        // the element we really care about
+        // is the dropdown-toggle's parent
+        $allDropdowns = $allDropdowns.add(this.parent());
+
+        return this.each(function() {
+            var $this = $(this),
+            $parent = getParent($this),
+            defaults = {
+                delay: 500,
+                instantlyCloseOthers: true
+            },
+            data = {
+                delay: $(this).data('delay'),
+                instantlyCloseOthers: $(this).data('close-others')
+            },
+            settings = $.extend(true, {}, defaults, options, data),
+            timeout;
+
+            $parent.hover(function(event) {
+                // so a neighbor can't open the dropdown
+                if(!$parent.hasClass('open') && !$this.is(event.target)) {
+                    return true;
+                }
+
+                if(settings.instantlyCloseOthers === true)
+                    $allDropdowns.removeClass('open');
+
+                window.clearTimeout(timeout);
+                $parent.addClass('open');
+                $parent.trigger($.Event('show.bs.dropdown'));
+            }, function() {
+                timeout = window.setTimeout(function() {
+                    $parent.removeClass('open');
+                    $parent.trigger('hide.bs.dropdown');
+                }, settings.delay);
+            });
+
+            // this helps with button groups!
+            $this.hover(function() {
+                if(settings.instantlyCloseOthers === true)
+                    $allDropdowns.removeClass('open');
+
+                window.clearTimeout(timeout);
+                $parent.addClass('open');
+                $parent.trigger($.Event('show.bs.dropdown'));
+            });
+
+            // handle submenus
+            $parent.find('.dropdown-submenu').each(function(){
+                var $this = $(this);
+                var subTimeout;
+                $this.hover(function() {
+                    window.clearTimeout(subTimeout);
+                    $this.children('.dropdown-menu').show();
+                    // always close submenu siblings instantly
+                    $this.siblings().children('.dropdown-menu').hide();
+                }, function() {
+                    var $submenu = $this.children('.dropdown-menu');
+                    subTimeout = window.setTimeout(function() {
+                        $submenu.hide();
+                    }, settings.delay);
+                });
+            });
+        });
+    };
+    function getParent($this) {
+        var selector = $this.attr('data-target')
+
+        if (!selector) {
+            selector = $this.attr('href')
+            selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+        }
+
+        var $parent = selector && $(selector)
+
+        return $parent && $parent.length ? $parent : $this.parent()
+    }
+    $(document).ready(function() {
+        // apply dropdownHover to all elements with the data-hover="dropdown" attribute
+        $('[data-hover="dropdown"]').dropdownHover();
+    });
+})(jQuery, this);
 /* ========================================================================
  * Bootstrap: modal.js v3.0.2
  * http://getbootstrap.com/javascript/#modals

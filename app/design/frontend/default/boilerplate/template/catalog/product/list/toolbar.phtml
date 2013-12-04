@@ -73,25 +73,7 @@
                         <?php endif; ?>
                     </div>
                     <div class="col-md-3">
-                        <?php if ($this->isExpanded()): ?>
-                        <div class="sorter">
-                            <div class="sort-by">
-                                <label><?php echo $this->__('Marcas') ?></label>
-                                <select onchange="setLocation(this.value)" class="form-control input-sm">
-                                        <option value="" selected="selected"></option>
-                                </select>
-                                <?php if ($this->getCurrentDirection() == 'desc'): ?>
-                                    <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>" title="<?php echo $this->__('Set Ascending Direction') ?>">
-                                        <i class="glyphicon glyphicon-chevron-down"></i>
-                                    </a>
-                                <?php else: ?>
-                                    <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>" title="<?php echo $this->__('Set Descending Direction') ?>">
-                                        <i class="glyphicon glyphicon-chevron-up"></i>
-                                    </a>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                        <?php endif; ?>
+                        
                     </div>
                     <div class="col-md-3">
                         <div class="limiter">
