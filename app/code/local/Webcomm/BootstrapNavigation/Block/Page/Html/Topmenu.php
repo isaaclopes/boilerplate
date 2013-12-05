@@ -48,12 +48,12 @@ class Webcomm_BootstrapNavigation_Block_Page_Html_Topmenu extends Mage_Page_Bloc
             }
 
             if ($child->hasChildren()) {
-                $anchorClasses[] = 'dropdown-toggle btn';
+                $anchorClasses[] = 'dropdown-toggle';
                 $anchorSubAttributes[] = array('id', $child->getId());
                 
                 if ($childLevel == 0) {
-                    //$anchorAttributes[] = array('data-toggle', 'dropdown');
-                    $anchorAttributes[] = array('data-hover', 'dropdown');
+                    $anchorAttributes[] = array('data-toggle', 'dropdown');
+                    //$anchorAttributes[] = array('data-hover', 'dropdown');
                     $anchorAttributes[] = array('data-target','#'.$child->getId());
                     $childrenWrapClass.=' dropdown-menu ';
                 }
