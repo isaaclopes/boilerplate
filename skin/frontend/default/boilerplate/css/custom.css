@@ -1,27 +1,15 @@
 body{
   background: #fff !important;
 }
-.block-cart .dropdown-minicart{
-    position: absolute;
-    right: -1px;
+.block-cart .block-minicart{
+    left: -209px;
+    margin: 2px 0 0;
+    padding: 5px 8px;
     top: 34px;
-    width: 250px;
-    z-index: 9991;
+    width: 338px;
 }
 .block-cart .actions{
     border-bottom: none;
-}
-.block-cart .dropdown-minicart {
-  padding: 5px 8px;
-  margin: 2px 0 0;
-  list-style: none;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  background-clip: padding-box;
 }
 .dropdown-menu{display:block;}
 .pricescroll{
