@@ -18,6 +18,7 @@
             <action method="addCss"><stylesheet>css/font-awesome.css</stylesheet></action>
             <!--action method="addItem"><type>skin_js</type><name>js/script-ck.js</name></action-->
             <action method="addItem"><type>skin_js</type><name>components/bootstrap/js/bootstrap.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/script.js</name></action>
         </reference>
     </default>
     <print>

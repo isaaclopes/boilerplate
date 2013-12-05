@@ -1,56 +1,41 @@
 jQuery.noConflict();
-;(function($) {
+;
+(function($) {
     'use strict';
-
-    function Site(settings) {
-
-        this.windowLoaded = false;
-
+    
+    var body = $("body, html");
+    var top = body.scrollTop() // Get position of the body
+    if(top!=0)
+    {
+        body.animate({
+            scrollTop :0
+        }, '500',function(){
+            //DO SOMETHING AFTER SCROLL ANIMATION COMPLETED
+            alert('Hello');
+        });
     }
-
-    Site.prototype = {
-        constructor: Site
-
-        , start: function() {
-            var me = this;
-
-            $(window).load(function() {
-                me.windowLoaded = true;
-            });
-
-            this.attach();
+    
+    
+    
+    
+    jQuery(window).scroll(function() {
+        var tela = jQuery(document).width();
+        if (jQuery(window).scrollTop() > 500 && tela > 1250) {
+            var $scrollprice=jQuery('.product-shop > .price-box'),$scrollbutton=jQuery('.product-shop').find('.input-group-btn');
+            jQuery('.scrollprice').html($scrollprice.html());
+            jQuery('.scrollbutton').html($scrollbutton.html());
+            jQuery('.pricescroll').show();
+            // > 100px from top - show div
         }
-
-        , attach: function() {
-            this.attachMedia();
+        else {
+            jQuery('.pricescroll').hide();
+            // <= 100px from top - hide div
         }
-
-        , attachMedia: function() {
-            var $links = $('[data-toggle="media"]');
-            if ( ! $links.length) return;
-
-            // When somebody clicks on a link, slide the
-            // carousel to the slide which matches the
-            // image index and show the modal
-            $links.on('click', function(e) {
-                e.preventDefault();
-
-                var $link = $(this),
-                   $modal = $($link.attr('href')),
-                $carousel = $modal.find('.carousel'),
-                    index = parseInt($link.data('index'));
-
-                $carousel.carousel(index);
-                $modal.modal('show');
-
-                return false;
-            });
-        }
-    }
-
+    });
+    
+    
     jQuery(document).ready(function($) {
-        var site = new Site();
-        site.start();
+
     });
 
 })(jQuery);

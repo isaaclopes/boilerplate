@@ -24,6 +24,11 @@ body{
   background-clip: padding-box;
 }
 .dropdown-menu{display:block;}
+.pricescroll{
+    position: fixed;
+    right: -15px;
+    z-index: 1;
+}
 /*home lista 5 produto*/
 @media (min-width: 992px) {
     .cms-home .products-grid .item{
