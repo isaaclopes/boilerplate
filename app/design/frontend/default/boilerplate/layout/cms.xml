@@ -32,9 +32,9 @@ Default layout, loads most of the pages
 
     <default>
         <reference name="top.links2">
-                <action method="addLink" translate="label title" module="cms"><label>Descontos</label><url helper="customer/getAccountUrl"/><title>Descontos</title><prepare/><urlParams/><position>0</position></action>
-                <action method="addLink" translate="label title" module="cms"><label>Ajuda</label><url helper="customer/getAccountUrl"/><title>Ajuda</title><prepare/><urlParams/><position>10</position></action>
-                <action method="addLink" translate="label title" module="cms"><label>Central de Atendimento</label><url helper="customer/getAccountUrl"/><title>Central de Atendimento</title><prepare/><urlParams/><position>20</position></action>
+                <action method="addLink" translate="label title" module="cms"><label>Descontos</label><url helper="customer/getAccountUrl"/><title>Descontos</title><prepare/><urlParams/><position>0</position><liParams/><aParams/><beforeText><![CDATA[<span class="fa fa-tags fa-flip-horizontal"></span> ]]></beforeText><afterText> | </afterText></action>
+                <action method="addLink" translate="label title" module="cms"><label>Ajuda</label><url helper="customer/getAccountUrl"/><title>Ajuda</title><prepare/><urlParams/><position>10</position><liParams/><aParams/><beforeText><![CDATA[<span class="glyphicon glyphicon-question-sign"></span> ]]></beforeText><afterText> | </afterText></action>
+                <action method="addLink" translate="label title" module="cms"><label>Central de Atendimento</label><url helper="customer/getAccountUrl"/><title>Central de Atendimento</title><prepare/><urlParams/><position>20</position><liParams/><aParams/><beforeText><![CDATA[<span class="glyphicon glyphicon-earphone"></span> ]]></beforeText><afterText/></action>
         </reference>
         <reference name="footer">
             <block type="cms/block" name="cms_footer_links" before="footer_links">
