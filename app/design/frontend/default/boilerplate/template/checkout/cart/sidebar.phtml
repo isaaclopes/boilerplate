@@ -29,55 +29,58 @@
  * @see Mage_Checkout_Block_Cart_Sidebar
  */
 ?>
-<?php if ($this->getIsNeedToDisplaySideBar()): ?>
-    <div class="block-cart dropdown">
-        <?php $_cartQty = $this->getSummaryCount() ?>
-        <div class="block-title" role="button" data-toggle="dropdown" data-target="#dLabel-menu" data-hover="dropdown">
-            <span class="fa fa-shopping-cart fa-2x"></span>
-            <?php if ($_cartQty > 0): ?>
-                <?php if ($_cartQty == 1): ?>
-                     <strong><span><?php echo $this->__('<a href="%s">My Cart (1)</a>', $this->getUrl('checkout/cart')) ?></span></strong>
-                <?php else: ?>
-                    <strong><span><?php echo $this->__('<a href="%s">My Cart (%s)</a>', $this->getUrl('checkout/cart'), $_cartQty) ?></span></strong>
-                <?php endif ?>
+
+<div class="top-cart">
+<?php $_cartQty = $this->getSummaryCount() ?>
+<?php if ($this->getIsLinkMode() || !$this->getIsNeedToDisplaySideBar()):?>
+    <div class="block-title no-items">
+        <ul class="links cart-link">
+            <li ><a href="<?php echo $this->getUrl('checkout/cart'); ?>"><?php echo $_myCart ?></a></li>
+        </ul>
+    </div>
+<?php else:?>
+    <div class="block-title<?php if(!$_cartQty) { echo (' no-items'); } ?>" role="button" data-target="#topCartContent"  data-hover="dropdown">
+        <span class="fa fa-shopping-cart fa-2x"></span>
+        <?php if ($_cartQty > 0): ?>
+            <?php if ($_cartQty == 1): ?>
+                 <strong><span><?php echo $this->__('<a href="%s">My Cart (1)</a>', $this->getUrl('checkout/cart')) ?></span></strong>
             <?php else: ?>
-                <strong><span><?php echo $this->__('<a href="%s">My Cart</a>', $this->getUrl('checkout/cart')) ?></span></strong>
+                <strong><span><?php echo $this->__('<a href="%s">My Cart (%s)</a>', $this->getUrl('checkout/cart'), $_cartQty) ?></span></strong>
             <?php endif ?>
-        </div>
-        <div class="block-content dropdown-menu block-minicart" role="menu" id="dLabel-menu">
-            <?php $_items = $this->getRecentItems() ?>
-            <?php if (count($_items)): ?>
-                <p class="block-subtitle"><?php echo $this->__('Recently added item(s)') ?></p>
-                <ol id="cart-sidebar" class="mini-products-list">
-                    <?php foreach ($_items as $_item): ?>
-                        <?php echo $this->getItemHtml($_item) ?>
-                    <?php endforeach; ?>
+        <?php else: ?>
+            <strong><span><?php echo $this->__('<a href="%s">My Cart</a>', $this->getUrl('checkout/cart')) ?></span></strong>
+        <?php endif ?>
+    </div>
+    <div id="topCartContent" class="block-content" role="menu">
+        <div class="inner-wrapper panel panel-default"><?php // extra div to smooth slideUp and slideDown ?>
+        <?php $_items = $this->getRecentItems() ?>
+        <?php if(count($_items)): ?>
+            <div class="panel-body">
+                <ol id="mini-cart" class="mini-products-list">
+                <?php foreach($_items as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach; ?>
                 </ol>
-                <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
-            <?php else: ?>
-                <p class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
-            <?php endif ?>
-            <?php if ($_cartQty > 0): ?>
-                <div class="summary">
-                    <p class="subtotal">
-                        <?php if ($this->canApplyMsrp()): ?>
-                            <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
-                        <?php else: ?>
-                            <span class="label"><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
-                            <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
-                                <br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    </p>
-                </div>
-            <?php endif ?>
-            <?php if ($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+            </div>
+            <script type="text/javascript">decorateList('mini-cart', 'none-recursive')</script>
+        <?php else: ?>
+            <div class="cart-empty panel-body">
+                <?php echo $this->__('You have no items in your shopping cart.') ?>
+            </div>
+        <?php endif ?>
+        <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+            <div class="panel-footer">
+                <p class="subtotal">
+                    <span class="label"><?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?><?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?> / <?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?><?php endif; ?>
+                </p>
                 <div class="actions">
                     <?php echo $this->getChildHtml('extra_actions') ?>
-                    <button type="button" title="<?php echo $this->__('Cart') ?>" class="button" onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>')"><span><span><?php echo $this->__('Cart') ?></span></span></button>
-                    <button type="button" title="<?php echo $this->__('Checkout') ?>" class="btn btn-warning" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
+                    <button class="btn btn-default" type="button" onclick="setLocation('<?php echo $this->getUrl('checkout/cart'); ?>')"><span><span><?php echo $this->__('Go to Shopping Cart') ?></span></span></button>
+                    <button class="btn btn-success" type="button" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
                 </div>
-            <?php endif ?>
+            </div>
+        <?php endif ?>
         </div>
     </div>
-<?php endif; ?>
+<?php endif;?>
+</div>
